@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resQmeal | Eco-Friendly Logistics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- App Identity Section -->
+        <header style="margin-bottom: 2rem; text-align: center;">
+            <h1>resQmeal</h1>
+            <p class="subtitle">Connecting fresh surplus logistics to protect the environment.</p>
+        </header>
+
+        <!-- Main Dynamic Auth Card -->
+        <div class="card">
+            <!-- Visual Concept Asset Banner -->
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" 
+                 alt="Fresh grocery surplus" class="card-image">
+            
+            <div class="card-content">
+                <h2 id="auth-title" style="font-size: 1.4rem; margin-bottom: 0.35rem;">Login to Hub</h2>
+                <p id="auth-subtitle" class="subtitle" style="margin-bottom: 1.75rem;">Enter details to manage food supply recovery runs.</p>
+                
+                <form id="auth-form" onsubmit="handleSubmit(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+                    
+                    <!-- Role Portal Selection - ALWAYS VISIBLE for Testing and Direct Login Access -->
+                    <div>
+                        <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">Select Your Portal Role</label>
+                        <select id="auth-role" style="border-color: var(--primary);">
+                            <option value="supplier">Big Mart / Hypermarket (Supplier)</option>
+                            <option value="reviewer"> Food Items Reviewer (Manager)</option>
+                            <option value="rider">Eco-Delivery Driver (Rider)</option>
+                            <option value="receiver">Restaurant / NGO Kitchen (Receiver)</option>
+                        </select>
+                    </div>
+
+                    <div id="register-fields" style="display: none; flex-direction: column; gap: 1rem;">
+                        <input type="text" id="auth-name" placeholder="Full Name / Store Identity">
+                        <input type="tel" id="auth-phone" placeholder="Contact Phone Number">
+                    </div>
+
+                    <input type="email" id="auth-email" placeholder="Email Address" required>
+                    <input type="password" id="auth-password" placeholder="Password" required>
+                    
+                    <button type="submit" class="btn" style="margin-top: 0.5rem;">Authenticate Access</button>
+                </form>
+
+                <p style="text-align: center; font-size: 0.875rem; color: var(--text-muted); margin-top: 1.5rem;">
+                    <span id="toggle-text">New to the platform?</span> 
+                    <a href="#" id="toggle-auth-mode" onclick="toggleAuth(event)" style="color: var(--primary); font-weight: 700; text-decoration: none; margin-left: 0.25rem;">Create Account</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module">
+        let isRegisterMode = false;
+
+        window.toggleAuth = function(e) {
+            e.preventDefault();
+            isRegisterMode = !isRegisterMode;
+            
+            const regFields = document.getElementById('register-fields');
+            const cardImg = document.querySelector('.card-image');
+            
+            document.getElementById('auth-title').innerText = isRegisterMode ? "Join the Alliance" : "Login to Hub";
+            document.getElementById('auth-subtitle').innerText = isRegisterMode ? "Help intercept surplus items from going to landfills." : "Enter details to manage food supply recovery runs.";
+            
+            if (isRegisterMode) {
+                regFields.style.display = "flex";
+                cardImg.src = "https://images.unsplash.com/photo-1605000797499-95a51c5569ae?auto=format&fit=crop&w=600&q=80"; 
+            } else {
+                regFields.style.display = "none";
+                cardImg.src = "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80";
+            }
+
+            document.getElementById('toggle-text').innerText = isRegisterMode ? "Already verified?" : "New to the platform?";
+            document.getElementById('toggle-auth-mode').innerText = isRegisterMode ? "Sign In" : "Create Account";
+        }
+
+        window.handleSubmit = function(e) {
+            e.preventDefault();
+            
+            // 1. Get the current selected role dropdown value
+            const selectedRole = document.getElementById('auth-role').value;
+            
+            // 2. Direct Demo Router: Instantly forwards you straight to the corresponding dashboard view
+            if (selectedRole === 'supplier') {
+                window.location.href = 'supplier.html';
+            } else if (selectedRole === 'reviewer') {
+                window.location.href = 'reviewer.html';
+            } else if (selectedRole === 'rider') {
+                window.location.href = 'rider.html';
+            } else if (selectedRole === 'receiver') {
+                window.location.href = 'receiver.html';
+            } else {
+                alert("Unknown role selection.");
+            }
+        }
+    </script>
+</body>
+</html>

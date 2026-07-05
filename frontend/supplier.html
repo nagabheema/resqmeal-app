@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resQmeal Hub | Dispatch Supply</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header style="margin-bottom: 2rem; text-align: center;">
+            <h1>Supplier Dashboard</h1>
+            <p class="subtitle">Broadcast batch batches before they drop out of utility scale.</p>
+        </header>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=600&q=80" 
+                 alt="Warehouse surplus inventory management" class="card-image">
+            
+            <div class="card-content">
+                <form id="listing-form" onsubmit="publishSupplyBatch(event)" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                    
+                    <div>
+                        <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">Supply Classification</label>
+                        <select id="food-type" required>
+                            <option value="about_to_expire">⚠️ About to Expire Food Items</option>
+                            <option value="leftover_food">🍲 Leftover Prepared Food</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">Batch Details</label>
+                        <input type="text" id="food-name" placeholder="Item Label (e.g., 50x Wheat Buns, Rice Pots)" required>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <div style="flex: 1;">
+                            <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">Quantity</label>
+                            <input type="number" id="food-qty" placeholder="Units" required>
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">Hours Until Expiry</label>
+                            <input type="number" id="food-expiry-hours" placeholder="Hours" min="1" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; display: block; margin-bottom: 0.5rem;">Dispatch Coordinates</label>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <input type="text" id="geo-location" placeholder="Lat, Long (e.g., 17.448, 78.474)" required readonly>
+                            <button type="button" class="btn" onclick="fetchCurrentLocation()" style="width: auto; padding: 0.875rem 1.25rem; background-color: var(--primary);">📍 Pin</button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn" style="margin-top: 0.5rem;">Broadcast Drop to Fleet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function fetchCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const lat = position.coords.latitude.toFixed(4);
+                    const lng = position.coords.longitude.toFixed(4);
+                    document.getElementById('geo-location').value = `${lat}, ${lng}`;
+                }, () => {
+                    alert("Location access denied. Please type coordinates manually.");
+                });
+            }
+        }
+
+        function publishSupplyBatch(e) {
+            e.preventDefault();
+            alert("Batch successfully prioritized and pushed directly to nearby active Riders!");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+:root {
+    --bg-main: #F4F6F8;
+    --surface: #FFFFFF;
+    --primary: #1B5E20;      /* Deep Professional Forest Green */
+    --secondary: #E65100;    /* Premium Alert Orange */
+    --accent: #E8F5E9;       /* Soft Mint Highlight */
+    --text-primary: #212121;  /* Material Charcoal */
+    --text-muted: #757575;
+    --radius-lg: 12px;
+    --radius-md: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'SF Pro Display', -apple-system, 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid #E0E0E0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+/* Production-Grade Map Container */
+.map-viewport {
+    width: 100%;
+    height: 320px;
+    background-color: #E5E4E2;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.card-content {
+    padding: 1.75rem;
+}
+
+h1 {
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 1.75rem;
+    letter-spacing: -0.03em;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--primary);
+    color: var(--surface);
+    padding: 0.875rem;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #0E3A12;
+}
+
+/* Secondary Actions (e.g., Claim/Accept buttons) */
+.btn-secondary {
+    background-color: var(--secondary);
+}
+.btn-secondary:hover {
+    background-color: #BF360C;
+}
+
+input, select {
+    width: 100%;
+    padding: 0.85rem;
+    border: 1.5px solid #E0E0E0;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: var(--primary);
+}
+/* Dashboard Premium Metrics Layout Engine */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+.metric-card {
+    background: var(--bg-main);
+    border: 1px solid #E0E0E0;
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+}
+
+.metric-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.metric-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.metric-value.highlight {
+    color: var(--primary);
+}
+
+.metric-value.alert {
+    color: var(--secondary);
+}
+
+/* Pipeline Rows */
+.pipeline-item {
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

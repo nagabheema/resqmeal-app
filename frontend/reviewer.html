@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resQmeal Pro | Reviewer Panel</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>Reviewer Panel</h1>
+                <p class="subtitle">Quality assurance and batch verification pipeline.</p>
+            </div>
+            <span style="background: var(--accent); color: var(--primary); font-size: 0.75rem; font-weight: 700; padding: 0.5rem 1rem; border-radius: 2rem;">MANAGER HUB</span>
+        </header>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <p class="metric-label">📋 Batches Checked</p>
+                <p class="metric-value" id="reviewer-tasks">142</p>
+            </div>
+            <div class="metric-card">
+                <p class="metric-label">💰 Monthly Stipend</p>
+                <p class="metric-value highlight" id="reviewer-wallet">₹4,500</p>
+            </div>
+            <div class="metric-card">
+                <p class="metric-label">🔥 Audit Streak</p>
+                <p class="metric-value alert" id="reviewer-streak">12 Days</p>
+            </div>
+            <div class="metric-card">
+                <p class="metric-label">⭐ Audit Accuracy</p>
+                <p class="metric-value" id="reviewer-rating">4.9 / 5.0</p>
+            </div>
+        </div>
+
+        <main class="card" style="padding: 1.5rem;">
+            <h3 style="margin-bottom: 1rem;">Incoming Quality Pipeline</h3>
+            <div id="pipeline-container">
+                <div class="pipeline-item" id="batch-row-1">
+                    <div>
+                        <p style="font-weight: 700; color: var(--text-primary);">Buffer Buffet Leftovers</p>
+                        <p class="subtitle" style="font-size: 0.8rem;">Origin: Paradise Kitchen</p>
+                        
+                        <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                            <label style="font-size: 0.75rem;"><input type="checkbox" id="q-check"> Quality Ok</label>
+                            <label style="font-size: 0.75rem;"><input type="checkbox" id="l-check"> Load Sealed</label>
+                        </div>
+                    </div>
+                    <button class="btn" style="width: auto; padding: 0.5rem 1rem; font-size: 0.85rem;" onclick="approveBatch()">Verify</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function approveBatch() {
+            const q = document.getElementById('q-check').checked;
+            const l = document.getElementById('l-check').checked;
+            if(!q || !l) {
+                alert("Please complete both Quality and Load checks before verifying!");
+                return;
+            }
+            
+            document.getElementById('batch-row-1').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('batch-row-1').remove();
+                // Dynamically scale dashboard values up on complete
+                document.getElementById('reviewer-tasks').innerText = "143";
+                document.getElementById('reviewer-wallet').innerText = "₹4,550";
+                alert("Batch approved and routed straight to the Rider marketplace!");
+            }, 300);
+        }
+    </script>
+</body>
+</html>

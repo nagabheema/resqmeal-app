@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resQmeal Pro | Rider Node</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>Rider Fleet</h1>
+                <p class="subtitle">Shortest path navigation logistics router.</p>
+            </div>
+            <span style="background: var(--accent); color: var(--primary); font-size: 0.75rem; font-weight: 700; padding: 0.5rem 1rem; border-radius: 2rem;">GPS ACTIVE</span>
+        </header>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <p class="metric-label">📦 Runs Completed</p>
+                <p class="metric-value" id="rider-tasks">84</p>
+            </div>
+            <div class="metric-card">
+                <p class="metric-label">💰 Green Wallet</p>
+                <p class="metric-value highlight" id="rider-wallet">₹1,840</p>
+            </div>
+            <div class="metric-card">
+                <p class="metric-label">🔥 Delivery Streak</p>
+                <p class="metric-value alert">7 Days</p>
+            </div>
+            <div class="metric-card">
+                <p class="metric-label">⭐ Rider Rating</p>
+                <p class="metric-value">4.8</p>
+            </div>
+        </div>
+
+        <main class="card">
+            <div id="map" style="height: 200px; width: 100%;"></div>
+            <div class="card-content">
+                <h3 style="margin-bottom: 0.5rem;">Active Route Plan</h3>
+                <p class="subtitle" style="margin-bottom: 1rem;">🎯 Optimized Sequence: Paradise Kitchen $\rightarrow$ Hope Foundation</p>
+                <button class="btn btn-secondary" onclick="completeDrop(this)">Confirm Dropoff Complete</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const rLoc = [17.4482, 78.4741], nLoc = [17.4731, 78.5012];
+        const map = L.map('map').setView(rLoc, 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        L.marker(rLoc).addTo(map).bindPopup('Origin').openPopup();
+        L.marker(nLoc).addTo(map).bindPopup('Target NGO');
+        L.polyline([rLoc, nLoc], {color: '#1B5E20', weight: 4}).addTo(map);
+
+        function completeDrop(btn) {
+            btn.innerText = "Syncing with cloud...";
+            setTimeout(() => {
+                document.getElementById('rider-tasks').innerText = "85";
+                document.getElementById('rider-wallet').innerText = "₹1,900";
+                btn.className = "btn";
+                btn.style.backgroundColor = "var(--primary)";
+                btn.innerText = "Run Logged Successfully! 🌱";
+            }, 800);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resQmeal Pro | Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container" style="max-width: 700px;">
+        <header style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>Platform Cockpit</h1>
+                <p class="subtitle">System operations and system infrastructure parameters ledger.</p>
+            </div>
+            <span style="background: #333333; color: #FFFFFF; font-size: 0.75rem; font-weight: 700; padding: 0.5rem 1rem; border-radius: 2rem;">ROOT ROOT SYSTEM ACTIVE</span>
+        </header>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <p class="metric-label">📈 Total Platform Runs</p>
+                <p class="metric-value">1,248</p>
+            </div>
+            <div class="metric-card">
+                <p class="metric-label">💳 Platform Revenue</p>
+                <p class="metric-value highlight">₹34,500</p>
+            </div>
+            <div class="metric-card">
+                <p class="metric-label">🔥 Uptime Streak</p>
+                <p class="metric-value alert">99.98%</p>
+            </div>
+            <div class="metric-card">
+                <p class="metric-label">⭐ Network Health</p>
+                <p class="metric-value">4.95 / 5.0</p>
+            </div>
+        </div>
+
+        <main style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+            <div class="card" style="padding: 1.5rem;">
+                <h3 style="margin-bottom: 1rem; color: var(--primary);">System Real-Time Infrastructure Logs</h3>
+                <div style="background: #1E1E1E; color: #00FF00; font-family: monospace; padding: 1rem; border-radius: var(--radius-md); font-size: 0.85rem; line-height: 1.6; max-height: 150px; overflow-y: auto;">
+                    [INFO] 2026-07-05 09:04:12 - Server listening on port 5000...<br>
+                    [SYNC] Firestore cluster linked successfully to project resqmeal-aab5b.<br>
+                    [ROUTING] OpenStreetMap routing engines active, calculating vectors.<br>
+                    [METRICS] Platform system wallet arrays synchronized to client views.
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
